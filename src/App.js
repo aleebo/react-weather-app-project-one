@@ -10,6 +10,7 @@ export default function App() {
         <a
           href="https://github.com/aleebo/react-weather-app-project-one"
           target="_blank"
+          rel="noreferrer"
         >
           {" "}
           open-sourced on Github.
