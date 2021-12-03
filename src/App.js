@@ -8,7 +8,7 @@ export default function App() {
       <div className="container">
         <h1> Weather App</h1>
         <Weather city="New York/>
-        <div className="footer">
+        <footer>
          
           This project is coded by Alicia Vuong and is
 
@@ -19,9 +19,9 @@ export default function App() {
             >
               {" "}
             open-sourced on Github.
-             </a>
-        
-        </div>
+            
+        </a>
+        </footer>
       </div>
     </div> 
     );
