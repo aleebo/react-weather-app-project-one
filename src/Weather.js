@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
+import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -22,17 +22,21 @@ export default function Weather(props) {
       date: new Date(response.data.dt * 1000),
     });
 
-    function handleSubmit(event) {
-      event.preventDefault();
+    function search() {
       const apiKey = "04e088e25ccb622f4891c5136c21db30";
       let city = "New York";
       let apiUrl =
         "https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric";
-      axios.get(apiUrl).then(displayWeather);
+      axios.get(apiUrl).then(handleResponse);
     }
 
-    function updateCity(event) {
+    function handleSubmit(event) {
+      event.preventDefault();
+    }
+
+    function handleCityChange(event) {
       setCity(event.target.value);
+      search();
     }
 
     if (weatherData.ready) {
@@ -46,7 +50,7 @@ export default function Weather(props) {
                   placeholder="Enter a city.."
                   className="form-control"
                   autoFocus="on"
-                  onChange={updateCity}
+                  onChange={handleCityChange}
                 />
               </div>
               <div className="col-3">
@@ -58,32 +62,7 @@ export default function Weather(props) {
               </div>
             </div>
           </form>
-
-          <h1>{weatherData.city}</h1>
-          <ul>
-            <li>
-              <FormattedDate date={weatherData.date} />{" "}
-            </li>
-            <li>
-              Description:
-              {weatherData.description}
-            </li>
-          </ul>
-          <div className="row">
-            <div className="col-6">
-              <img src={weatherData.icon} alt={weatherData.description} />
-              <span className="temperture">
-                {Math.round(weatherData.temperature)}
-              </span>{" "}
-              <span className="units">°C </span>
-            </div>
-            <div className="col-6">
-              <ul>
-                <li>Humidity:{weatherData.humidity}%</li>
-                <li>Wind:{weatherData.wind}m/h</li>
-              </ul>
-            </div>
-          </div>
+          <WeatherInfo data={weatherData} />
         </div>
       );
     } else {

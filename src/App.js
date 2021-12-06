@@ -7,22 +7,19 @@ export default function App() {
     <div className="App">
       <div className="container">
         <h1> Weather App</h1>
-        <Weather city="New York/>
+        <Weather city="New York" />
         <footer>
-         
           This project is coded by Alicia Vuong and is
-
-        <a 
-        href="https://github.com/aleebo/react-weather-app-project-one"
+          <a
+            href="https://github.com/aleebo/react-weather-app-project-one"
             target="_blank"
-            rel="noreferrer" 
-            >
-              {" "}
+            rel="noreferrer"
+          >
+            {" "}
             open-sourced on Github.
-            
-        </a>
+          </a>
         </footer>
       </div>
-    </div> 
-    );
+    </div>
+  );
 }
