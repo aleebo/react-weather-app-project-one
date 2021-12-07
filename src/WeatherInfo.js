@@ -21,10 +21,6 @@ export default function WeatherInfo(props) {
 
             <div className="float-left">
               <WeatherTemperature celsius={props.data.temperature} />
-              <span className="temperture">
-                {Math.round(props.data.temperature)}
-              </span>{" "}
-              <span className="units"> °C </span>
             </div>
           </div>{" "}
         </div>{" "}
